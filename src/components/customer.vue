@@ -71,7 +71,7 @@ export default {
           localStorage.setItem('token', this.result['token'])
           localStorage.setItem('role', this.result['role'])
           localStorage.setItem('loginid', this.result['id'])
-          this.$router.push('/test')
+          this.$router.push('/menu')
         } else {
           localStorage.setItem('status', 'F')
           alert('login Fail')

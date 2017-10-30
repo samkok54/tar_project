@@ -9,12 +9,6 @@
             <a class="item" @click ="testjava()" v-if="userRole==='admin'">
               Monitoring
             </a>
-            <!-- <a class="item" @click ="Clickmapcustomer()" v-if="userRole==='admin'">
-              Admin
-            </a>
-            <a class="item" @click ="signup()" v-if="userRole==='admin'">
-              User Management
-            </a> -->
             <div class="right menu">
               <div class="item">
                 <div class="ui icon input">
@@ -29,111 +23,7 @@
           </div>
           <br>
           <div class="ui grid">
-           <div class="ui vertical pointing menu">
-            <!-- <a class="item" style="background-color: white" @click ="custA()" > -->
-              <!-- {{result}} -->
-            <!-- </a> -->
-            <button class="ui secondary basic button" style="width: 194px;height: 45px;" @click="toggleCustomerList()">Customer</button>
-            <div class="item" v-for= "item in result['results']" v-show="isOpenCustomerList">
-              <customer-site 
-                :customer="item"
-                :customerServices="resultgetservice['results']"
-                :services="resultshowservicename['results']"></customer-site>
-            </div>
-<!-- 
-            <a class="item" v-for= "(item, index) in result['results']"style="opacity: 0.8;" >
-              <p @click.self="item.isOpen=!item.isOpen">sadsdsdsd</p>
-              <h5>{{item['name en']}}</h5>
-              <p>{{item.isOpen}}</p>
-              <div v-if="isSiteOptionOpen[index]">{{item}}</div>
-            </a> -->
-                     <!-- <div class="item" v-if="A" style="font-size: 12px" @click ="service()">
-                          Site A
-                          <div class="item" v-if="serviceA" style="font-size: 10px">
-                            service A
-                          </div>
-                     </div>
-                          <div class="item" v-if="A" style="font-size: 12px">
-                          Site B
-                        </div> -->
-                    <!--     <a class="item" @click ="custB()">
-                          Customer B
-                        </a>
-                        <div class="item" v-if="B" v-for= "(item,index) in result">
-                          {{index}}
-                        </div> -->
-                    <!-- <div class="item" v-if="B" style="font-size: 12px">
-                          Site C
-                          </div>
-                          <div class="item" v-if="B" style="font-size: 12px">
-                          Site D
-                        </div> -->
-                        <!-- <a class="item" @click="service()">
-                          <h4>Service</h4>
-                        </a> -->
-                        <div v-if="userRole==='admin'">
-                          <div class="item">
-                          <h4>Customer</h4> 
-                          <a class="item" style="opacity: 0.8;" @click="addcust()">
-                            <h5>Add customer</h5>
-                          </a>
-                          <a class="item" style="opacity: 0.8;" @click="showcust()">
-                            <h5>Show customer</h5>
-                          </a>
-                          </div>
-                          <div class="item">
-                          <h4>Site</h4> 
-                          <a class="item" style="opacity: 0.8;" @click="Clickaddsite()">
-                            <h5>Add Site</h5>
-                          </a>
-                          <a class="item" style="opacity: 0.8;" @click="Clickshowsite()">
-                            <h5>Show Site</h5>
-                          </a>
-                          </div>
-                          <div class="item">
-                          <h4>Customer Service</h4> 
-                          <a class="item" style="opacity: 0.8;" @click="Clickaddservice()">
-                            <h5>Add Customer Service</h5>
-                          </a>
-                          <a class="item" style="opacity: 0.8;" @click="showservice()">
-                            <h5>Show Customer Service</h5>
-                          </a>
-                          <a class="item" style="opacity: 0.8;" @click="Clickshowoneservice()">
-                            <h5>Show One Customer Service</h5>
-                          </a>
-                          </div>
-                           <div class="item">
-                          <h4>Service</h4> 
-                          <a class="item" style="opacity: 0.8;" @click="addservicename()">
-                            <h5>Add Service</h5>
-                          </a>
-                          <a class="item" style="opacity: 0.8;" @click="showservicename()">
-                            <h5>Show Service</h5>
-                          </a>
-                          </div>
-                          <div class="item">
-                          <h4>Router</h4> 
-                          <a class="item" style="opacity: 0.8;" @click="addnode()">
-                            <h5>Add Router</h5>
-                          </a>
-                          <a class="item" style="opacity: 0.8;" @click="shownode()">
-                            <h5>Show Router</h5>
-                          </a>
-                          </div>
-                          <div class="item">
-                          <h4> Login Management</h4> 
-                          <a class="item" style="opacity: 0.8;" @click="signup()">
-                            <h5>Add Login</h5>
-                          </a>
-                          <a class="item" style="opacity: 0.8;" @click="showlogin()">
-                            <h5>Show Login</h5>
-                          </a>
-                           <a class="item" style="opacity: 0.8;" @click="Clickmapcustomer()">
-                            <h5>User Management </h5>
-                          </a>
-                          </div>
-                        </div>
-                      </div>
+         
                       <!-- --==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--== -->
                       <div v-if="currentPage === 'show-one-service'">
                       <br>
@@ -193,42 +83,7 @@
                         </tbody>
                       </table>
                       </div>
-                      <div v-if="currentPage === 'show-service'">
-                      <center><h3>Service</h3></center>
-                      <br>
-                      <table class="ui fixed single line celled table">
-                        <thead>
-                          <tr>
-                          <th>Service id *</th>
-                            <th>Site id</th>
-                            <th title="Customer id">Customer id</th>
-                            <th title="Customer service id">Customer service id</th>
-                            <th>Interface id</th>
-                            <th>Netobject ID</th>
-                            <th>Description</th>
-                            <th style="width: 150px">Edit/Delete</th>
-                          </tr></thead>
-                        <tbody>
-                          <tr v-for="item in resultgetservice['results']">
-                                <td>{{item['service id']}}</td>
-                                <td>{{item['site id']}}</td>
-                                <td>{{item['customer id']}}</td>
-                                <td>{{item['customer service id']}}</td>
-                                <td>{{item['interface service id']}}</td>
-                                <td>{{item['netobject id']}}</td>
-                                <td>{{item['description']}}</td>
-                                <td>
-                                <button class="mini ui button yellow" @click="editservice()">
-                                  Edit
-                                </button>
-                                <button class="mini ui button red">
-                                  Delete
-                                </button></td>
-                              </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      </div>
+             
                       <div v-if="currentPage === 'show-cust'">
                       <center><label><h3>Show Customer</h3></label></center>
                         <table class="ui fixed single line celled table">

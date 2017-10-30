@@ -83,7 +83,7 @@ export default {
   methods: {
     toLogin () {
       localStorage.clear()
-      this.$router.push('/customer')
+      this.$router.push('/menu')
     },
     hello () {
       this.$http.post('http://203.150.54.141:5000/signup', { username: this.username, password: this.password, role: this.role }).then((response) => {
